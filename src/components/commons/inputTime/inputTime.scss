@@ -1,0 +1,32 @@
+.input-time {
+  margin: 30px;
+  padding: 10px;
+  border: solid 1px #ced4da;
+  .time-form {
+    .time-title {
+      float: left;
+      width: 150px;
+      font-weight: bold;
+    }
+    .time-label {
+      float: left;
+      width: 80px;
+      line-height: 38px;
+    }
+    .time-input {
+      float: left;
+      width: 50px;
+      margin-right: 20px;
+    }
+  }
+}
+.time-form::after {
+  clear: both;
+  content: '';
+  display: block;
+}
+.input-time::after {
+  content: "";
+  clear: both;
+  display: block;
+}

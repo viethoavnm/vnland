@@ -1,0 +1,361 @@
+@import "../../../constants/colors.scss";
+.admin-container {
+  width: 100%;
+  height: 100%;
+  padding: 30px;
+  .hidden-link {
+    display: none;
+  }
+
+  .list-page {
+    font-family: "Roboto-Regular";
+    height: 100%;
+
+    .admin-title {
+      font-size: 30px;
+      color: $blueAsio;
+    }
+    .admin-sub-title {
+      font-size: 14px;
+      color: $titleColor;
+    }
+
+    .search-box {
+      width: 200px;
+      height: 40px;
+      border-radius: 4px;
+      border: none;
+      background-color: #ffffff;
+      &::placeholder {
+        color: rgba(0, 0, 0, 0.3);
+      }
+    }
+
+    .btn-disable {
+      cursor: not-allowed !important;
+    }
+
+    .btn-add-new {
+      min-width: 106px;
+      height: 40px;
+      margin-left: 10px;
+      border-radius: 4px;
+      background-color: $btnColor;
+      color: #ffffff;
+      border: none;
+      font-family: Roboto-Medium;
+      cursor: pointer;
+    }
+    /* enable absolute positioning */
+    .inner-addon { 
+      position: relative; 
+    }
+
+    /* style icon */
+    .inner-addon .glyphicon {
+    position: absolute;
+    padding: 10px;
+    pointer-events: none;
+    }
+
+    /* align icon */
+    .left-addon i  {
+      left:  0px;
+      position: absolute;
+    }
+    .right-addon i {
+      right: 5px;
+      top: 10px;
+      position: absolute;
+      color: $btnColor;
+      cursor: pointer;
+    }
+
+    /* add padding  */
+    .left-addon input  { padding-left:  30px; }
+    .right-addon input { padding-right: 30px; }
+
+    .edit-group {
+      margin: 20px 0;
+    }
+
+    .dropdown-menu {
+      width: 200px;
+      max-width: 400px;
+      max-height: 300px;
+      overflow: auto;
+      .dropdown-item {
+        cursor: pointer;
+      }
+    }
+
+    .ReactTable {
+      min-height: 200px;
+    }
+    .pagination {
+      justify-content: center;
+      color: $titleColor;
+      font-size: 14px;
+      font-family: "Roboto-Medium";
+      li {
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        cursor: pointer;
+      }
+      li:hover {
+        background-color: rgba(3, 169, 244, 0.05);
+      }
+      .active {
+        background-color: $btnColor;
+        color: #ffffff;
+      }
+      .active:hover {
+        background-color: $btnColor;
+        color: #ffffff;
+      }
+      .disabled {
+        cursor: not-allowed;
+        a {
+          cursor: not-allowed;
+        }
+      }
+    }
+  }
+
+  .form-product {
+    max-width: 778px;
+    margin: 31px auto;
+    background-color: #ffffff;
+    border-radius: 4px;
+    border: solid 1px #e1e1e1;
+    .form-heading {
+      width: 100%;
+      background-color: $actionColor;
+      height: 48px;
+      color: #ffffff;
+      font-size: 16px;
+      font-family: "Roboto-Bold";
+      line-height: 48px;
+      padding-left: 14px;
+      border-radius: 4px 4px 0 0;
+    }
+    .form-contents {
+      padding: 60px 30px 30px 30px;
+      .form-center {
+        display: flex;
+        justify-content: center;
+      }
+      .double-columns {
+        display: flex;
+        justify-content: space-between;
+        .form-group {
+          width: 50%;
+          &:first-child {
+            margin-right: 30px;
+          }
+        }
+      }
+      .form-group {
+        position: relative;
+        margin-bottom: 20px;
+        hr {
+          margin: 0;
+        }
+        .btn-group {
+          width: 100%;
+          font-family: "Roboto-Regular";
+          font-size: 16px;
+          color: $subTitleColor;
+          .btn {
+            width: 100%;
+            height: 40px;
+            background-color: $white3;
+            border-radius: 2px;
+            text-align: left;
+          }
+          .dropdown-toggle::after {
+            display: block;
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            color: $btnColor;
+          }
+          .dropdown-menu {
+            width: 100%;
+            max-height: 333px;
+            padding-left: 8px;
+            &.show {
+              display: block;
+            }
+          }
+          .dropdown-select {
+            height: auto !important;
+            white-space: pre-wrap;
+          }
+        }
+        
+        .label-form {
+          font-size: 14px;
+          font-family: "Roboto-Regular";
+          color: #545454;
+          line-height: 1.71;
+          width: 100%;
+        }
+        .label-limit {
+          color: #a0a0a0;
+          font-size: 14px;
+          font-family: "Roboto-Regular";
+          text-align: right;
+          bottom: 0;
+          position: absolute;
+          right: 13px;
+        }
+        .input-text {
+          background-color: $white3;
+          width: 100%;
+          height: 40px;
+          border: none;
+          border-radius: 2px;
+          color: $subTitleColor;
+          font-size: 16px;
+          line-height: 40px;
+          padding: 0 15px;
+          &.limit-text {
+            padding: 0 55px 0 15px;
+          }
+          &.multi-text {
+            height: 90px;
+            line-height: 30px;
+          }
+          &.choose-color {
+            padding-left: 110px;
+          }
+        }
+        .add-image {
+          width: 60px;
+          height: 60px;
+          background-color: $white3;
+          border-radius: 2px;
+          border: solid 1px $borderColor;
+          font-size: 20px;
+          color: $titleColor;
+          text-align: center;
+          line-height: 60px;
+          cursor: pointer;
+        }
+        &.group-btn {
+          width: 100%;
+          display: flex;
+          flex-direction: row-reverse;
+          margin: 0;
+          .btn {
+            width: 96px;
+            height: 36px;
+            border: none;
+            border-radius: 4px;
+            font-family: "Roboto-Medium";
+            font-size: 14px;
+            font-weight: 500;
+          }
+          .btn-primary {
+            background-color: $btnColor;
+            color: $white2;
+          }
+          .btn-cancel {
+            color: $actionColor;
+            background-color: $white2;
+            margin-right: 10px;
+          }
+        }
+        .services {
+          display: flex;
+          justify-content: space-around;
+          .box-services {
+            border-radius: 4px;
+            border: 1px solid #07acf2;
+            min-width: 162px;
+            min-height: 36px;
+            line-height: 36px;
+            color: #06acf1;
+            font-family: "Roboto-Regular";
+            font-size: 14px;
+            font-weight: 500;
+            text-align: center;
+            cursor: pointer;
+            i {
+              margin-right: 8px;
+            }
+          }
+        }
+      }
+    }
+    .image-box{
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      .image-item {
+        position: relative;
+        width: 106px;
+        margin: 0 5px 20px 0;
+        cursor: pointer;
+        .img_item {
+          height: 60px;
+        }
+        i {
+          right: 5px;
+          top: -15px;
+          position: absolute;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .dropdown-menu {
+      max-height: 300px;
+      overflow: auto;
+    }
+  }
+}
+
+// /* Small devices (portrait tablets and large phones, 600px and up) */
+// @media only screen and (min-width: 600px) {
+//   .admin-container {
+//     width: 100%;
+//     .form-product {
+//       padding: 10px;
+//     }
+//   }
+// }
+
+// /* Medium devices (landscape tablets, 768px and up) */
+// @media only screen and (min-width: 768px) {
+//   .admin-container {
+//     width: 100%;
+//     .form-product {
+//       padding: 10px;
+//     }
+//   }
+// }
+
+// /* Large devices (laptops/desktops, 992px and up) */
+// @media only screen and (min-width: 992px) {
+//   .admin-container {
+//     width: 90%;
+//     .form-product {
+//       padding: 20px;
+//     }
+//   }
+// }
+
+// /* Extra large devices (large laptops and desktops, 1200px and up) */
+// @media only screen and (min-width: 1200px) {
+//   .admin-container {
+//     width: 80%;
+//     .form-product {
+//       padding: 20px;
+//     }
+//   }
+// }

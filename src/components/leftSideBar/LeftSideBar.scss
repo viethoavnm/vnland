@@ -1,0 +1,125 @@
+@import "../../constants/colors.scss";
+.left-side-bar {
+  margin-top: 55px;
+  position: fixed;
+  width: 299px;
+  height: 100%;
+  z-index: 2;
+  transition-duration: 0.5s;
+  min-height: calc(100vh - 60px);
+  min-height: -webkit-calc(100vh - 60px);
+  min-height: -moz-calc(100vh - 60px);
+  background-color: $white2;
+  padding-top: 15px;
+
+  #explan-menu:hover {
+    .sub-menu {
+      display: block;
+      position: fixed;
+      transition: all 0.5s;
+      left: 0;
+      width: 299px;
+    }
+  }
+  #explan-menu {
+    .sub-menu {
+      display: none;
+      li {
+        padding-left: 44px;
+      }
+    }
+    .ic-down {
+      float: right;
+      line-height: 50px;
+      margin-right: 20px;
+    }
+  }
+  .branch-box {
+    height: 70px;
+    width: 100%;
+    overflow: hidden;
+    padding: 5px;
+    .ic-logo {
+      width: 40px;
+    }
+    .ic-branch {
+      width: 100px;
+      padding-left: 10px;
+    }
+  }
+  ul {
+		padding: 0;
+		list-style-type: none;
+    text-align: left;
+    font-size: 14px;
+  }
+  li {
+		width: auto;
+		height: 60px;
+		line-height: 50px;  
+    padding-left: 18px;
+    span.menu{
+      padding-left: 17px;
+      font-family: "Roboto-Regular";
+      color: #636363;
+    }
+    &:hover, &.selected {
+      background-color: #e7e7e7;
+      cursor: pointer;
+      border-left: solid 3px $blueAsio;
+      span.menu{
+        padding-left: 17px;
+        font-family: "Roboto-Medium";
+        color: $blueAsio;
+      }
+      i {
+        color: $blueAsio;
+      }
+    }
+  }
+  .item-menu {
+    height:50px;
+    overflow:hidden;
+    color:#636363;
+    .ic-menu {
+      height: 30px;
+      width: 30px;
+    }
+    i {
+      color: #636363;
+    }
+  }
+  a {
+		color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .t_search {
+    color: black;
+    height: 35px;
+    margin-left: 15px;
+    width: 190px
+}
+}
+
+// * Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (max-width: 1330px) {
+  .left-side-bar {
+    width: 55px;
+    transition-duration: 0.5s;
+  }
+  .left-side-bar:hover {
+    width: 250px;
+    transition-duration: 0.5s;
+  }
+  #explan-menu:hover {
+    .sub-menu {
+      display: block;
+      position: fixed;
+      transition: all 0.5s;
+      left: 0;
+      width: 150px !important;
+    }
+  }
+}
