@@ -81,7 +81,7 @@ class Login extends React.Component {
       <div className="page-content">
         <div className="login-form">
           <div className="login-container">
-            <div className="login-subtitle">AsioPay</div>
+            <div className="login-subtitle">Vinaland</div>
             <div className="login-title">Admin Portal</div>
 
             <div className="login-content">
@@ -89,7 +89,7 @@ class Login extends React.Component {
                 <img src={loginImg} />
               </div>
               <form className="form">
-                <div className="login-notice">Please login by your AsioPay account!</div>
+                <div className="login-notice">Please login by your Vinaland account!</div>
                 <div className="login-label">Email</div>
                 <input type="text" className="login-input" value={email} onChange={this.handleInputEmail} />
                 {

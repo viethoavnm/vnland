@@ -105,7 +105,7 @@ class Register extends Component {
                 <img src={loginImg} />
               </div>
               <form className="form">
-                <div className="login-notice">Register new account to access asio system.</div>
+                <div className="login-notice">Register new account to access vinaland system.</div>
                 <div className="login-label">Email</div>
                 <input type="text" className="login-input" name="email" value={email.value} onChange={this.onChange} autoFocus />
                 <span className="help-block">{email.message}</span>

@@ -13,4 +13,19 @@ html, body, #root {
   #content {
     flex-grow: 1;
   }
+  &.hidden-left-menu {
+    #content {
+      margin: 66px 0 0 0 !important;
+      transition-duration: 0.5s;
+    }
+  }
+  &.hidden-header {
+    .wrapper {
+      padding: 0;
+      #content {
+        margin: 0 !important;
+        transition-duration: 0.5s;
+      }
+    }
+  }
 }
