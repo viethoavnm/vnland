@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import "./LeftSideBar.scss";
 import { connect } from 'react-redux';
-import * as UserServices from "../../pages/users/services/userService";
-import { selectMyServices, selectSettings } from "../../actions";
-import { redirectPageConstants } from "../../constants";
+import icHome from "../../public/images/icons/ic_home.png";
+import icReport from "../../public/images/icons/ic_report.png";
+import icRoom from "../../public/images/icons/ic_room.png";
+import icService from "../../public/images/icons/ic_service.png";
 
 class LeftSideBar extends Component {
 
@@ -31,46 +32,27 @@ class LeftSideBar extends Component {
     const page = localStorage.getItem("page");
     return (
       <div className="left-side-bar">
-        <ul>
-          <div>
-            <a onClick={(e) => this.handleRedirectPage("/Menu1")}>
-              <li className={urlPage === "/menu1" ? "item-menu selected" : "item-menu"}>
-                <i className="fas fa-coffee"></i>
-                <span className="menu">Menu1</span>
-              </li>
-            </a>
-            <a onClick={(e) => this.handleRedirectPage("/Menu2")}>
-              <li className={urlPage === "/menu2" ? "item-menu selected" : "item-menu"}>
-                <i className="fas fa-ticket-alt"></i>
-                <span className="menu">Menu2</span>
-              </li>
-            </a>
-            <a onClick={(e) => this.handleRedirectPage("/Menu3")}>
-              <li className={urlPage === "/menu3" ? "item-menu selected" : "item-menu"}>
-                <i className="fas fa-ticket-alt"></i>
-                <span className="menu">Menu3</span>
-              </li>
-            </a>
-            <a>
-              <li id="explan-menu" className={urlPage === "/menu4" || urlPage === "/menu5" || urlPage === "/menu6" ? "item-menu dropdown selected" : "item-menu dropdown"}>
-                <i className="fas fa-walking"></i>
-                <span className="menu">List menu</span>
-                <i className="fas fa-angle-down ic-down"></i>
-                <ul className="sub-menu">
-                  <li onClick={(e) => this.handleRedirectPage("/menu4")}>
-                    <span>Menu4</span>
-                  </li>
-                  <li onClick={(e) => this.handleRedirectPage("/menu5")}>
-                    <span>Menu5</span>
-                  </li>
-                  <li onClick={(e) => this.handleRedirectPage("/menu6")}>
-                    <span>Menu6</span>
-                  </li>
-                </ul>
-              </li>
-            </a>
+        <div>
+          <div onClick={(e) => this.handleRedirectPage("/Home")} className={urlPage === "/home" ? "item-menu selected" : "item-menu"}>
+            <img src={icHome} />
+            <span className="menu">Home</span>
+            <hr />
           </div>
-        </ul>
+          <div onClick={(e) => this.handleRedirectPage("/Room")} className={urlPage === "/room" ? "item-menu selected" : "item-menu"}>
+            <img src={icRoom} />
+            <span className="menu">Room</span>
+            <hr />
+          </div>
+          <div onClick={(e) => this.handleRedirectPage("/Service")} className={urlPage === "/service" ? "item-menu selected" : "item-menu"}>
+            <img src={icService} />
+            <span className="menu">Service</span>
+            <hr />
+          </div>
+          <div onClick={(e) => this.handleRedirectPage("/Report")} className={urlPage === "/report" ? "item-menu selected" : "item-menu"}>
+            <img src={icReport} />
+            <span className="menu">Report</span>
+          </div>
+        </div>
       </div>
     );
   }

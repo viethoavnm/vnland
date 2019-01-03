@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import "./Header.scss";
 import { connect } from "react-redux";
-import ic_branch from "../../public/images/icons/asio_brand_blue.png";
-import ic_logo from "../../public/images/icons/asio_logo_blue.png";
+import logo_vinaland from "../../public/images/icons/vinaland-logo.png";
+import user_ic from "../../public/images/icons/user_ic.png";
 import { setLanguage, userActions } from "../../actions";
 import ic_en from "../../public/images/icons/en.png";
 import ic_vi from "../../public/images/icons/vi.png";
@@ -45,8 +45,7 @@ class HeaderAdmin extends Component {
         <div className="main-header">
           {
             <div className="branch-box mr-auto">
-              <img className="ic-logo" src={ic_logo} />
-              <img className="ic-branch" src={ic_branch} />
+              <img className="ic-logo" src={logo_vinaland} />
             </div>
           }
           <div className="header-contents">
@@ -58,12 +57,12 @@ class HeaderAdmin extends Component {
             </button>
 
             <div className="user-box">
-              <i className="fas fa-users header-icon"></i>
-              <button className="btn-show-user-info dropdown-toggle" type="button" data-toggle="dropdown">{username}
+              <button className="btn-show-user-info dropdown-toggle" type="button" data-toggle="dropdown">Dennis Vu
+                <img src={user_ic} />
               </button>
               <div className="dropdown-menu profile">
                 <div className="profile-userpic">
-                  <img src={image_profile ? image_profile : ic_logo} className="img-responsive" alt="" />
+                  <img src={image_profile ? image_profile : logo_vinaland} className="img-responsive" alt="" />
                 </div>
                 <div className="profile-usertitle">
                   <div className="profile-name">
@@ -74,13 +73,12 @@ class HeaderAdmin extends Component {
                   </div>
                 </div>
                 <div className="profile-userbuttons">
-                  <button type="button" className="btn btn-sm btn-become-host" onClick={(e) => this.props.history.push("/UserInfo")}>Update info</button>
+                  <button type="button" className="btn btn-sm btn-become-host" onClick={(e) => this.props.history.push("/UserInfo")}>User Info</button>
                   <button type="button" className="btn btn-sm btn-logout" onClick={this.handleLogOut}>Logout</button>
                 </div>
               </div>
             </div>
           </div>
-          }
         </div>
       </div>
     );
