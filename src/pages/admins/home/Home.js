@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux';
 import "../styles/Admin.scss";
 import "./Home.scss";
 import SearchBox from "../../../components/commons/searchBox/SearchBox";
@@ -6,6 +7,8 @@ import Dropdown from "../../../components/commons/dropdown/Dropdown";
 import * as HomeServices from "./HomeServices";
 import DataTable from "../../../components/commons/dataTable/DataTable";
 import ic_add_images from "../../../public/images/icons/ic_add-images.png";
+import * as LocationService from "../../../services/LocationService";
+import { success, error, showModal } from "../../../actions";
 
 class Home extends Component {
   _isMounted = false;
@@ -13,6 +16,13 @@ class Home extends Component {
     super(props);
 
     this.state = {
+      isValid: true,
+      homeName: "",
+      homeDescription: "",
+      location: {},
+      media: {},
+      homeStatus: 0,
+
       searchText: "",
       selectedHome: [],
       listHome: [],
@@ -48,6 +58,7 @@ class Home extends Component {
         let data = [];
         for (let i = 0; i < response.data.length; i++) {
           const item = {
+            Id: response.data[i].id,
             Title: response.data[i].homeName,
             Description: response.data[i].homeDescription,
             Status: response.data[i].homeStatus ? "True" : "False"
@@ -108,10 +119,67 @@ class Home extends Component {
   onHandleCheckout = () => { }
   onHandleCheckin = () => { }
   onHandleEdit = () => { }
-  onHandleDelete = () => { }
+  onHandleDelete = (home) => {
+    if (home) {
+      this.props.showModal("Do you want delete  " + home.Title + " ?", confirm => {
+        HomeServices.deleteHome(home.Id, response => {
+          if (response.status === 200) {
+            this.props.success("Delete successful");
+            this.getListHome();
+          } else {
+            this.props.error("Something were wrong!")
+          }
+        })
+      }, error => {
+        this.props.error(error);
+      })
+    }
+  }
+  handleAddHome = () => {
+    if (this.formValidate()) {
+      const data = {
+        homeName: this.state.homeName,
+        homeDescription: this.state.homeDescription,
+        location: this.state.location,
+        media: this.state.media,
+      }
+      HomeServices.createHome(data, response => {
+        if (response.status === 200) {
+          this.props.success("Add home successfully!")
+          this.getListHome();
+        } else {
+          this.props.error("Something were wrong!");
+        }
+      }, error => {
+        this.props.error(error);
+      })
+    }
+    $('#add-new-home').modal('toggle');
+  }
+
+  formValidate = () => {
+    const state = this.state;
+    let check = state.homeName !== "" && state.homeDescription !== "";
+    this.setState({
+      isValid: check
+    });
+    return check;
+  };
+
+  onChangeData = (key, value) => {
+    this.setState({
+      [key]: value
+    })
+  }
 
   render() {
     const {
+      isValid,
+      homeName,
+      homeDescription,
+      location,
+      media,
+      homeStatus,
       searchText,
       selectedHome,
       listHome,
@@ -140,8 +208,8 @@ class Home extends Component {
           action={true} onHandleView={this.onHandleView} onHandleCheckin={this.onHandleCheckin}
           onHandleCheckout={this.onHandleCheckout} onHandleEdit={this.onHandleEdit} onHandleDelete={this.onHandleDelete} />
 
-        <div className="modal fade" id="add-new-home" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div className="modal-dialog" role="document">
+        <div className="modal fade" id="add-new-home" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div className="modal-dialog add-home-modal" role="document">
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title" id="exampleModalLabel">Create New Home</h5>
@@ -149,11 +217,15 @@ class Home extends Component {
               <div className="modal-body">
                 <div className="modal-row">
                   <div className="add-modal-title">Title</div>
-                  <input className="form-control" type="text" />
+                  <input className="form-control" name="homeName" value={homeName} type="text"
+                    onChange={(e) => this.onChangeData(e.target.name, e.target.value)} />
+                  {!isValid && homeName === '' && <span className="help-block">Field is required</span>}
                 </div>
                 <div className="modal-row">
                   <div className="add-modal-title">Description</div>
-                  <input className="form-control" type="text" />
+                  <input className="form-control" type="text" name="homeDescription"
+                    value={homeDescription} type="text" onChange={(e) => this.onChangeData(e.target.name, e.target.value)} />
+                  {!isValid && homeDescription === '' && <span className="help-block">Field is required</span>}
                 </div>
                 <div className="modal-row-double">
                   <div className="modal-row">
@@ -186,7 +258,7 @@ class Home extends Component {
               </div>
               <div className="modal-footer">
                 <button type="button" className="btn btn-close" data-dismiss="modal">Close</button>
-                <button type="button" className="btn btn-finish">Save</button>
+                <button type="button" className="btn btn-finish" onClick={this.handleAddHome} data-dismiss="modal">Save</button>
               </div>
             </div>
           </div>
@@ -195,4 +267,18 @@ class Home extends Component {
     );
   }
 }
-export default Home;
+
+const mapDispatchToProps = dispatch => {
+  return {
+    error: (message) => {
+      dispatch(error(message));
+    },
+    success: (message) => {
+      dispatch(success(message));
+    },
+    showModal: (message, confirm) => {
+      dispatch(showModal(message, confirm))
+    }
+  }
+};
+export default connect(null, mapDispatchToProps)(Home);

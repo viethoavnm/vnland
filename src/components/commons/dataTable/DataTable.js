@@ -45,74 +45,76 @@ export default class DataTable extends Component {
 
     return (
       <div className="data-table">
-        <table className="cus-table">
-          <tbody>
-            <tr>
-              <th>
-                <Checkbox id={this.props.id} title="" value="ALL" checked={countSelected == data.length && data.length > 0} onChange={this.handleCheckbox} />
-              </th>
+        {
+          data.length > 0 && <table className="cus-table">
+            <tbody>
+              <tr>
+                <th>
+                  <Checkbox id={this.props.id} title="" value="ALL" checked={countSelected == data.length && data.length > 0} onChange={this.handleCheckbox} />
+                </th>
+                {
+                  columns.length > 0 && columns.map((item, index) => {
+                    if (item != "Id") {
+                      return <th key={index}>{item.toUpperCase()}</th>
+                    }
+                  })
+                }
+                {this.props.action && <th>Action</th>}
+              </tr>
               {
-                columns.length > 0 && columns.map((item, index) => {
-                  if (item != "Id") {
-                    return <th key={index}>{item.toUpperCase()}</th>
+                data.length > 0 && data.map((item, index) => {
+                  let checked = false;
+                  for (let i = 0; i < this.props.selected.length; i++) {
+                    if (this.props.selected[i].Id == item.Id) {
+                      checked = true;
+                    }
                   }
+                  return <tr key={index}>
+                    <td>
+                      <Checkbox id={this.props.id} value={index} checked={checked} onChange={this.handleCheckbox} />
+                    </td>
+                    {
+                      columns.length > 0 && columns.map((head, index) => {
+                        if (head == "Id") {
+                          return null;
+                        }
+                        if (head == "Image") {
+                          return <td key={index}>
+                            {
+                              item.Image.map((img, index) => {
+                                if (index < 3) {
+                                  return <img key={index} src={img} />
+                                }
+                              })
+                            }
+                          </td>
+                        } else {
+                          return <td key={index}>
+                            {item[head]}
+                          </td>
+                        }
+                      })
+                    }
+
+                    {
+                      this.props.action && <td>
+                        <div className="action">
+                          <img src={ic_view} onClick={() => this.props.onHandleView(item)} />
+                          {
+                            item.status ? <img src={ic_checkin} onClick={() => this.props.onHandleCheckout(item)} /> : <img src={ic_checkout} onClick={() => this.props.onHandleCheckin(item)} />
+                          }
+                          <img src={ic_edit} onClick={() => this.props.onHandleEdit(item)} />
+                          <img src={ic_delete} onClick={() => this.props.onHandleDelete(item)} />
+                        </div>
+                      </td>
+                    }
+                  </tr>
                 })
               }
-              {this.props.action && <th>Action</th>}
-            </tr>
-            {
-              data.length > 0 && data.map((item, index) => {
-                let checked = false;
-                for (let i = 0; i < this.props.selected.length; i++) {
-                  if (this.props.selected[i].Id == item.Id) {
-                    checked = true;
-                  }
-                }
-                return <tr key={index}>
-                  <td>
-                    <Checkbox id={this.props.id} value={index} checked={checked} onChange={this.handleCheckbox} />
-                  </td>
-                  {
-                    columns.length > 0 && columns.map((head, index) => {
-                      if (head == "Id") {
-                        return null;
-                      }
-                      if (head == "Image") {
-                        return <td key={index}>
-                          {
-                            item.Image.map((img, index) => {
-                              if (index < 3) {
-                                return <img key={index} src={img} />
-                              }
-                            })
-                          }
-                        </td>
-                      } else {
-                        return <td key={index}>
-                          {item[head]}
-                        </td>
-                      }
-                    })
-                  }
 
-                  {
-                    this.props.action && <td>
-                      <div className="action">
-                        <img src={ic_view} onClick={() => this.props.onHandleView(item)} />
-                        {
-                          item.status ? <img src={ic_checkin} onClick={() => this.props.onHandleCheckout(item)} /> : <img src={ic_checkout} onClick={() => this.props.onHandleCheckin(item)} />
-                        }
-                        <img src={ic_edit} onClick={() => this.props.onHandleEdit(item)} />
-                        <img src={ic_delete} onClick={() => this.props.onHandleDelete(item)} />
-                      </div>
-                    </td>
-                  }
-                </tr>
-              })
-            }
-
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+        }
         {
           data.length == 0 && <div className="box-nocontent">
             Select <a>Add New</a> to add new

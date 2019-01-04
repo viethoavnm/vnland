@@ -1,4 +1,4 @@
-.modal-dialog {
+.add-home-modal {
 	min-width: 672px;
 	.modal-content {
 		.modal-header {
@@ -16,6 +16,7 @@
 				display: flex;
 				height: 40px;
 				margin-bottom: 16px;
+				position: relative;
 				.add-modal-title {
 					min-width: 100px;
 					font-size: 16px;

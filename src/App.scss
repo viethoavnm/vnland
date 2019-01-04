@@ -2,6 +2,15 @@ html, body, #root {
   height: 100%;
   width: 100%;
 }
+.modal-backdrop {
+  background-color: transparent;
+}
+.modal {
+  background-color: rgba(0,0,0,0.3);
+}
+.fade:not(.show) {
+  opacity: unset;
+}
 .body-container {
   height: 100%;
   width: 100%;
@@ -12,6 +21,13 @@ html, body, #root {
   }
   #content {
     flex-grow: 1;
+  }
+  .help-block {
+    position: absolute;
+    bottom: 0px;
+    font-size: 13px;
+    color: red;
+    left: 110px;
   }
   &.hidden-left-menu {
     #content {
