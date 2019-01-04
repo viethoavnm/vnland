@@ -39,18 +39,7 @@ class Register extends Component {
       let user = {
         password: this.state.password.value,
         email: this.state.email.value,
-        name: this.state.name.value,
-        image_profile: '',
-        parent_user: '',
-        agent_region: '',
-        type: 1,
-        remark_point: 0,
-        status: 1,
-        location: {
-          address: '',
-          lat: 0.0,
-          long: 0.0
-        }
+        userName: this.state.name.value,
       };
       dispatch(userActions.register(user));
     }

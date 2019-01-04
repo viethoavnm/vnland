@@ -22,8 +22,8 @@ export default () =>
       <Route path="/Register" component={Register} />
       <Route path="/ForgotPw" component={ForgotPW} />
 
-      <PrivateRoute exact path="/" component={Home} />
-      <PrivateRoute exact path="/Home" component={Home} />
+      <Route exact path="/" component={Home} />
+      <Route exact path="/Home" component={Home} />
 
       <Route component={PageNotFound}></Route>
     </Switch>

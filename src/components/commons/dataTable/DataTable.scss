@@ -4,66 +4,11 @@
   width: 100%;
   height: auto;
   margin-top: 45px;
-  .mr-right {
-    margin-right: 30px;
-  }
-  .mr-bot {
-    margin-bottom: 20px;
-  }
-  .table-sort-label {
-    margin-right: 20px;
-    font-family: "Roboto-Regular";
-    color: $titleColor;
-    font-size: 14px;
-    line-height: 40px;
-  }
-  .btn-delete {
-    background-color: #ff0000;
-    border-radius: 4px;
-    font-family: "Roboto";
-    font-size: 14px;
-    color: #fafafa;
-  }
-  .btn-genQR {
-    background-color: $blueAsio;
-    min-width: 130px;
-    height: 40px;
-    color: $backgroundColor;
-    font-family: "Roboto-Medium";
-    font-size: 14px;
-    margin-right: 10px;
-  }
-  .btn-genQR:last-child {
-    margin-right: 0;
-  }
-  .dropdown-toggle {
-    width: 200px;
-    max-width: 240px;
-    color: $textColor;
-    background-color: #ffffff;
-    text-align: left;
-  }
-  .dropdown-toggle::after {
-    display: block;
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
-  }
-  .dropdown {
-    width: 100px;
-    height: 40px;
-    font-size: 14px;
-    font-family: "Roboto-Regular";
-    .dropdown-menu {
-      min-width: 120px;
-      &.select-row {
-        width: 100%;
-      }
-    }
-    .dropdown-toggle {
-      width: 100px;
-    }
+  
+  .btn-delete-all {
+    background-color: #e84118;
+    font-size: 16px;
+    color: #ffffff;
   }
   .cus-table {
     width: 100%;
@@ -84,20 +29,13 @@
       &:hover {
         background-color: rgba(3, 169, 244, 0.05);
         border: solid 5px rgba(3, 169, 244, 0.5);
-        .action {
-          visibility: visible;
-          text-align: center;
-          color: $actionColor;
-        }
       }
     }
     th {
       height: 40px;
       padding: 5px;
-      font-family: "RobotoCondensed-Bold";
-      color: $titleColor;
-      font-size: 14px;
-      font-weight: bold;
+      color: #393939;
+      font-size: 16px;
       &.btn-delete-all:hover {
         color: $btnColor;
       }
@@ -140,9 +78,9 @@
         font-family: "Roboto"
       }
       .action {
-        visibility: hidden;
         display: flex;
-        i {
+        img {
+          height: 16px;
           margin-left: 10px;
           &:first-child {
             margin-left: 0;

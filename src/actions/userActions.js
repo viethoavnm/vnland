@@ -18,11 +18,10 @@ function login(user, remember) {
     dispatch(request({ user }));
     services.login(user, response => {
       if (response.data.isSucess) {
-        localStorage.setItem('roles', JSON.stringify(response.data.data.roles));
         localStorage.setItem('user', JSON.stringify(response.data.data.user));
         localStorage.setItem('token', response.data.data.id);
         if (remember) {
-          cookie.save("asio_email_login", user.email, { path: '/' });
+          cookie.save("vinaland_email_login", user.email, { path: '/' });
         }
         dispatch(success(user));
         history.push('/');
@@ -74,7 +73,7 @@ function register(user) {
     dispatch(request(user));
 
     services.register(user, response => {
-      if (response.data.isSucess) {
+      if (response.status === 200) {
         dispatch(success());
         history.push('/login');
         dispatch(alertActions.success('Please check your email and click on the verification link before logging in'));

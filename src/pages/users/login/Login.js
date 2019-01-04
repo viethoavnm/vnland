@@ -20,7 +20,7 @@ class Login extends React.Component {
   }
 
   componentDidMount() {
-    const email = cookie.load("asio_email_login");
+    const email = cookie.load("vinaland_email_login");
     const url = new URL(window.location);
     var resetPass = url.searchParams.get("reset-pass");
     if (resetPass == "true") {
@@ -61,8 +61,7 @@ class Login extends React.Component {
     if (this.formIsValid() && password) {
       let user = {
         email: email,
-        password: password,
-        fcmtoken: "weblogin"
+        password: password
       };
       dispatch(userActions.login(user, this.state.remember));
     }

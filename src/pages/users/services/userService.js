@@ -3,7 +3,7 @@ import { makeGetRequest, makePostRequest, makePatchRequest } from "../../../util
 
 export function register(user, successCallback, failCallback) {
   const requestOptions = {
-    url: '/api/account',
+    url: '/api/users',
     headers: { 'Content-Type': 'application/json' },
     data: user
   };
@@ -33,7 +33,7 @@ export function resetPass(email, successCallback, failCallback) {
 
 export function login(user, successCallback, failCallback) {
   let requestOptions = {
-    url: '/api/account/signin/',
+    url: '/api/users/signin/',
     headers: { 'Content-Type': 'application/json', },
     data: user
   };

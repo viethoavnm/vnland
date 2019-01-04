@@ -2,7 +2,7 @@ import axios from "axios";
 import { isFunction, isObject, extend } from 'lodash';
 import { history } from '../../src/helper';
 
-const SERVER = "https://beta.asiopay.com:3300";
+const SERVER = "http://35.185.47.170:3300";
 const header = [navigator.platform, navigator.userAgent, navigator.appVersion, navigator.vendor, window.opera],
     dataos = [
       { name: 'Windows Phone', value: 'Windows Phone', version: 'OS' },
