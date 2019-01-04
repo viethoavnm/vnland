@@ -2,14 +2,34 @@
   height: 100%;
   width: 100%;
   padding: 10px 16px;
-  .title-admin-page {
-    color: #393939;
-    font-size: 28px;
-    font-weight: bold;
+  .title-row {
+    display: flex;
+    justify-content: space-between;
+    .title-admin-page {
+      color: #393939;
+      font-size: 28px;
+      font-weight: bold;
+      line-height: 32px;
+    }
+    .search-box {
+      min-width: 480px;
+      height: 32px;
+    }
   }
-  .search-box {
-    border-radius: 8px;
-    width: 480px;
-    height: 32px;
+  
+  .actions-row {
+    display: flex;
+    margin-top: 27px;
+    position: relative;
+    .btn-add-new {
+      height: 32px;
+      background-color: #0e9aff;
+      border: none;
+      line-height: 18px;
+      color: #ffffff;
+      font-weight: 600;
+      right: 0;
+      position: absolute;
+    }
   }
 }

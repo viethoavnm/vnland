@@ -30,7 +30,8 @@ module.exports = {
   devServer: {
     contentBase: PATHS.build,
     port: 6789,
-    historyApiFallback: true
+    historyApiFallback: true,
+    hot: true
   },
   plugins: [
     // uncomment when build production and comment when dev
@@ -39,36 +40,37 @@ module.exports = {
     //   }),
     // new webpack.optimize.UglifyJsPlugin(),
     ////////////////
+    new webpack.HotModuleReplacementPlugin(),
     HtmlWebpackPluginConfig,
-      new FaviconsWebpackPlugin({
-        // Your source logo
-        logo: PATHS.imgPath + '/icons/icon.png',
-        // The prefix for all image files (might be a folder or a name)
-        prefix: 'icons-[hash]/',
-        // Emit all stats of the generated icons
-        emitStats: false,
-        // The name of the json containing all favicon information
-        statsFilename: 'iconstats-[hash].json',
-        // Generate a cache file with control hashes and
-        // don't rebuild the favicons until those hashes change
-        persistentCache: true,
-        inject: true,
-        background: '#03a9f4',
-        title: 'Vinaland',
-    
-        icons: {
-          android: true,
-          appleIcon: true,
-          appleStartup: true,
-          coast: false,
-          favicons: true,
-          firefox: true,
-          opengraph: false,
-          twitter: false,
-          yandex: false,
-          windows: false
-        }
-      })
+    new FaviconsWebpackPlugin({
+      // Your source logo
+      logo: PATHS.imgPath + '/icons/icon.png',
+      // The prefix for all image files (might be a folder or a name)
+      prefix: 'icons-[hash]/',
+      // Emit all stats of the generated icons
+      emitStats: false,
+      // The name of the json containing all favicon information
+      statsFilename: 'iconstats-[hash].json',
+      // Generate a cache file with control hashes and
+      // don't rebuild the favicons until those hashes change
+      persistentCache: true,
+      inject: true,
+      background: '#03a9f4',
+      title: 'Vinaland',
+
+      icons: {
+        android: true,
+        appleIcon: true,
+        appleStartup: true,
+        coast: false,
+        favicons: true,
+        firefox: true,
+        opengraph: false,
+        twitter: false,
+        yandex: false,
+        windows: false
+      }
+    })
   ],
   module: {
     rules: [

@@ -10,6 +10,7 @@
     "classnames": "^2.2.6",
     "favicons-webpack-plugin": "0.0.9",
     "file-loader": "^1.1.11",
+    "history": "^4.7.2",
     "jquery": "^3.3.1",
     "lodash": "^4.17.11",
     "moment": "^2.22.2",
@@ -33,7 +34,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "webpack -d --watch",
-    "start": "webpack-dev-server --open",
+    "start": "webpack-dev-server --config ./webpack.config.js --open",
     "build": "webpack"
   },
   "devDependencies": {
@@ -52,6 +53,7 @@
     "css-loader": "^0.28.11",
     "html-webpack-plugin": "^3.2.0",
     "node-sass": "^4.9.2",
+    "react-hot-loader": "^4.6.3",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.21.0",
     "uglify-js-brunch": "^2.10.0",
