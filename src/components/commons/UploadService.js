@@ -2,7 +2,7 @@ import { makePostRequest} from "../../utils/cuiResource";
 
 export function uploadImage(data, successCallback, failCallback) {
     let config = {
-        url: '/api/Containers/images/upload',
+        url: '/api/container/images/upload',
         data: data
     };
     makePostRequest(config, (response) => {
@@ -14,7 +14,7 @@ export function uploadImage(data, successCallback, failCallback) {
 
 export function uploadVideo(data, successCallback, failCallback) {
     let config = {
-        url: '/api/Containers/videos/upload',
+        url: '/api/container/videos/upload',
         data: data
     };
     makePostRequest(config, (response) => {

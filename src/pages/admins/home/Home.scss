@@ -1,5 +1,7 @@
 .add-home-modal {
-	min-width: 672px;
+  min-width: 672px;
+  top: 25%;
+  transform: translateY(-50%);
 	.modal-content {
 		.modal-header {
 			border: none;
@@ -23,7 +25,10 @@
 					color: #393939;
 					font-weight: bold;
 					line-height: 40px;
-				}
+        }
+        .box-add-images {
+          display: flex;
+        }
 				.form-control {
 					border-radius: 8px;
 				}

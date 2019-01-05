@@ -11,6 +11,65 @@ html, body, #root {
 .fade:not(.show) {
   opacity: unset;
 }
+.image-box{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  .image-item {
+    position: relative;
+    width: 106px;
+    margin: 0 5px 20px 0;
+    cursor: pointer;
+    .img_item {
+      height: 60px;
+    }
+    i {
+      right: 5px;
+      top: -15px;
+      position: absolute;
+      cursor: pointer;
+    }
+  }
+}
+.add-image {
+  width: 60px;
+  height: 60px;
+  background-color: #f0f0f0;
+  border-radius: 2px;
+  border: solid 1px #d4d4d4;
+  font-size: 20px;
+  color: #a0a0a0;
+  text-align: center;
+  line-height: 60px;
+  cursor: pointer;
+}
+.cus-tooltip {
+  position: relative;
+  display: inline-block;
+  opacity: 1;
+}
+
+.cus-tooltip .tooltiptext {
+  visibility: hidden;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  width: 120px;
+  bottom: 100%;
+  left: 50%; 
+  margin-left: -60px; 
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.cus-tooltip:hover .tooltiptext {
+  visibility: visible;
+}
 .body-container {
   height: 100%;
   width: 100%;
@@ -24,7 +83,7 @@ html, body, #root {
   }
   .help-block {
     position: absolute;
-    bottom: 0px;
+    top: -16px;
     font-size: 13px;
     color: red;
     left: 110px;

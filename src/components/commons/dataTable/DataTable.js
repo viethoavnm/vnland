@@ -99,12 +99,26 @@ export default class DataTable extends Component {
                     {
                       this.props.action && <td>
                         <div className="action">
-                          <img src={ic_view} onClick={() => this.props.onHandleView(item)} />
-                          {
-                            item.status ? <img src={ic_checkin} onClick={() => this.props.onHandleCheckout(item)} /> : <img src={ic_checkout} onClick={() => this.props.onHandleCheckin(item)} />
-                          }
-                          <img src={ic_edit} onClick={() => this.props.onHandleEdit(item)} />
-                          <img src={ic_delete} onClick={() => this.props.onHandleDelete(item)} />
+                          <div className="cus-tooltip">
+                            <img src={ic_view} onClick={() => this.props.onHandleView(item)} />
+                            <span class="tooltiptext">View rooms</span>
+                          </div>
+                          <div className="cus-tooltip">
+                            {
+                              item.status ? <img src={ic_checkin} onClick={() => this.props.onHandleCheckout(item)} /> : <img src={ic_checkout} onClick={() => this.props.onHandleCheckin(item)} />
+                            }
+                            <span class="tooltiptext">Active/Deactive</span>
+                          </div>
+                          <div className="cus-tooltip">
+                            <img src={ic_edit} onClick={() => this.props.onHandleEdit(item)} />
+                            <span class="tooltiptext">Update</span>
+                          </div>
+
+                          <div className="cus-tooltip">
+                            <img src={ic_delete} onClick={() => this.props.onHandleDelete(item)} />
+                            <span class="tooltiptext">Delete</span>
+                          </div>
+
                         </div>
                       </td>
                     }
@@ -121,7 +135,7 @@ export default class DataTable extends Component {
           </div>
         }
         {
-          this.props.selected.length > 0 && this.props.onHandleDelete && <button type="button" className="btn btn-delete-all" onClick={this.props.onHandleDelete}>Delete</button>
+          this.props.selected.length > 0 && this.props.onHandleDelete && <button type="button" className="btn btn-delete-all" onClick={() => this.props.onHandleDelete(null)}>Delete</button>
         }
       </div>
     );

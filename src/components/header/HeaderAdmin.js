@@ -32,6 +32,34 @@ class HeaderAdmin extends Component {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.loggedIn !== this.props.loggedIn) {
+      const user = JSON.parse(localStorage.getItem('user'));
+      if (user) {
+        this.setState({
+          username: user.userName,
+          email: user.email,
+          image_profile: user.image_profile
+        })
+      } else {
+        this.setState({ username: "" });
+      }
+    }
+  }
+
+  componentDidMount() {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (user) {
+      this.setState({
+        username: user.userName,
+        email: user.email,
+        image_profile: user.image_profile
+      })
+    } else {
+      this.setState({ username: "", email: "" });
+    }
+  }
+
   render() {
     const {
       username,
@@ -57,7 +85,7 @@ class HeaderAdmin extends Component {
             </button>
 
             <div className="user-box">
-              <button className="btn-show-user-info dropdown-toggle" type="button" data-toggle="dropdown">Dennis Vu
+              <button className="btn-show-user-info dropdown-toggle" type="button" data-toggle="dropdown">{username}
                 <img src={user_ic} />
               </button>
               <div className="dropdown-menu profile">

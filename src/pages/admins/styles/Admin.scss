@@ -4,6 +4,7 @@
   padding: 10px 16px;
   .title-row {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     .title-admin-page {
       color: #393939;
@@ -19,6 +20,7 @@
   
   .actions-row {
     display: flex;
+    flex-wrap: wrap;
     margin-top: 27px;
     position: relative;
     .btn-add-new {

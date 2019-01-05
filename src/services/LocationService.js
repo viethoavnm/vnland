@@ -11,10 +11,11 @@ export function getContries(successCallback, failCallback) {
   });
 }
 
-export function getProvinces(contryCode, successCallback, failCallback) {
+export function getProvinces(countryCode, successCallback, failCallback) {
   let config = {
-    url: '/api/provinces?filter={"where":{"country_code":{"like":"' + contryCode + '"}}}' 
+    url: `/api/province?filter={"where":{"country_code":{"like":"${countryCode}"}}}`
   };
+
   makeGetRequest(config, (response) => {
     successCallback(response);
   }, (error) => {
@@ -24,7 +25,7 @@ export function getProvinces(contryCode, successCallback, failCallback) {
 
 export function getDistricts(provinceCode, successCallback, failCallback) {
   let config = {
-    url: '/api/districts?filter={"where":{"province_code":{"like":"' + provinceCode + '"}}}' 
+    url: `/api/district?filter={"where":{"province_code":{"like":"${provinceCode}"}}}`
   };
   makeGetRequest(config, (response) => {
     successCallback(response);
@@ -35,7 +36,7 @@ export function getDistricts(provinceCode, successCallback, failCallback) {
 
 export function getWards(districtCode, successCallback, failCallback) {
   let config = {
-    url: '/api/ward?filter={"where":{"district_code":{"like":"' + districtCode + '"}}}' 
+    url: '/api/ward?filter={"where":{"district_code":{"like":"' + districtCode + '"}}}'
   };
   makeGetRequest(config, (response) => {
     successCallback(response);

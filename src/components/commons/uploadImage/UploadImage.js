@@ -82,7 +82,7 @@ class ImageUpload extends Component {
           }
         })
       } else {
-        count ++;
+        count++;
         if (count == files.length) {
           callback(filteredImage)
         }
@@ -141,11 +141,11 @@ class ImageUpload extends Component {
         if (blob.size > 200000) {
           const compress = 200000 / blob.size;
           context.canvas.toBlob((blob) => {
-            const file_compressed = new File([blob], "resized-img.jpg", {
+            const file_compressed = new File([blob], Date.now(), {
               type: 'image/jpeg',
               lastModified: Date.now()
             });
-    
+
             const respone = {
               url: canvas.toDataURL(),
               file: file_compressed
@@ -153,11 +153,11 @@ class ImageUpload extends Component {
             callback(respone);
           }, 'image/jpeg', compress);
         } else {
-          const file_compressed = new File([blob], "resized-img.jpg", {
+          const file_compressed = new File([blob], Date.now(), {
             type: 'image/jpeg',
             lastModified: Date.now()
           });
-  
+
           const respone = {
             url: canvas.toDataURL(),
             file: file_compressed
